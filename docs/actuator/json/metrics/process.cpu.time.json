@@ -1,0 +1,12 @@
+{
+    "name": "process.cpu.time",
+    "description": "The \"cpu time\" used by the Java Virtual Machine process",
+    "baseUnit": "ns",
+    "measurements": [
+      {
+        "statistic": "COUNT",
+        "value": 69796875000
+      }
+    ],
+    "availableTags": []
+  }

@@ -1,0 +1,35 @@
+{
+    "cron": [
+      {
+        "runnable": {
+          "target": "au.com.patrick.springbootdemoapp.scheduled.ScheduledTasks.performPeriodicTaskWithCron"
+        },
+        "expression": "*/10 * * * * *",
+        "lastExecution": {
+          "time": "2025-04-23T10:59:50.001274700Z",
+          "status": "SUCCESS"
+        },
+        "nextExecution": {
+          "time": "2025-04-23T10:59:59.999767Z"
+        }
+      }
+    ],
+    "fixedDelay": [],
+    "fixedRate": [
+      {
+        "runnable": {
+          "target": "au.com.patrick.springbootdemoapp.scheduled.ScheduledTasks.performPeriodicTask"
+        },
+        "initialDelay": 0,
+        "interval": 10000,
+        "lastExecution": {
+          "time": "2025-04-23T10:59:45.559378500Z",
+          "status": "SUCCESS"
+        },
+        "nextExecution": {
+          "time": "2025-04-23T10:59:55.550767Z"
+        }
+      }
+    ],
+    "custom": []
+  }

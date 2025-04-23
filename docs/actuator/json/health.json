@@ -1,0 +1,25 @@
+{
+    "status": "UP",
+    "components": {
+      "diskSpace": {
+        "status": "UP",
+        "details": {
+          "total": 262854930432,
+          "free": 32719372288,
+          "threshold": 10485760,
+          "path": "C:\\Users\\Juan Miguel Garcia\\IdeaProjects\\spring-boot-demo-app\\spring-boot-demo-app\\.",
+          "exists": true
+        }
+      },
+      "ping": {
+        "status": "UP"
+      },
+      "ssl": {
+        "status": "UP",
+        "details": {
+          "validChains": [],
+          "invalidChains": []
+        }
+      }
+    }
+  }

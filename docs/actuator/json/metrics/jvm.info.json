@@ -1,0 +1,30 @@
+{
+    "name": "jvm.info",
+    "description": "JVM version info",
+    "measurements": [
+      {
+        "statistic": "VALUE",
+        "value": 1
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "vendor",
+        "values": [
+          "Oracle Corporation"
+        ]
+      },
+      {
+        "tag": "runtime",
+        "values": [
+          "Java(TM) SE Runtime Environment"
+        ]
+      },
+      {
+        "tag": "version",
+        "values": [
+          "21.0.6+8-LTS-jvmci-23.1-b55"
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,11 @@
+{
+    "name": "tomcat.sessions.rejected",
+    "baseUnit": "sessions",
+    "measurements": [
+      {
+        "statistic": "COUNT",
+        "value": 0
+      }
+    ],
+    "availableTags": []
+  }

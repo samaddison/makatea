@@ -1,0 +1,23 @@
+{
+    "name": "logback.events",
+    "description": "Number of log events that were enabled by the effective log level",
+    "baseUnit": "events",
+    "measurements": [
+      {
+        "statistic": "COUNT",
+        "value": 335
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "level",
+        "values": [
+          "warn",
+          "trace",
+          "debug",
+          "error",
+          "info"
+        ]
+      }
+    ]
+  }

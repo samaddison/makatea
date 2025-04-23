@@ -1,0 +1,11 @@
+{
+    "name": "tomcat.sessions.created",
+    "baseUnit": "sessions",
+    "measurements": [
+      {
+        "statistic": "COUNT",
+        "value": 0
+      }
+    ],
+    "availableTags": []
+  }

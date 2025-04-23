@@ -1,0 +1,11 @@
+{
+    "name": "system.cpu.count",
+    "description": "The number of processors available to the Java virtual machine",
+    "measurements": [
+      {
+        "statistic": "VALUE",
+        "value": 16
+      }
+    ],
+    "availableTags": []
+  }

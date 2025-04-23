@@ -1,0 +1,12 @@
+{
+    "events": [
+      {
+        "timestamp": "2025-04-23T10:24:55.240133900Z",
+        "principal": "anonymous",
+        "type": "INFO_ACCESS",
+        "data": {
+          "endpoint": "/api/info"
+        }
+      }
+    ]
+  }

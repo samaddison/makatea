@@ -1,0 +1,46 @@
+{
+    "name": "http.server.requests.active",
+    "baseUnit": "seconds",
+    "measurements": [
+      {
+        "statistic": "ACTIVE_TASKS",
+        "value": 1
+      },
+      {
+        "statistic": "DURATION",
+        "value": 0.0008857
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "exception",
+        "values": [
+          "none"
+        ]
+      },
+      {
+        "tag": "method",
+        "values": [
+          "GET"
+        ]
+      },
+      {
+        "tag": "uri",
+        "values": [
+          "UNKNOWN"
+        ]
+      },
+      {
+        "tag": "outcome",
+        "values": [
+          "SUCCESS"
+        ]
+      },
+      {
+        "tag": "status",
+        "values": [
+          "200"
+        ]
+      }
+    ]
+  }

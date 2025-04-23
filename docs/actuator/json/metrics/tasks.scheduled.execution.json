@@ -1,0 +1,51 @@
+{
+    "name": "tasks.scheduled.execution",
+    "baseUnit": "seconds",
+    "measurements": [
+      {
+        "statistic": "COUNT",
+        "value": 380
+      },
+      {
+        "statistic": "TOTAL_TIME",
+        "value": 0.1589318
+      },
+      {
+        "statistic": "MAX",
+        "value": 0.0004107
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "exception",
+        "values": [
+          "none"
+        ]
+      },
+      {
+        "tag": "code.namespace",
+        "values": [
+          "au.com.patrick.springbootdemoapp.scheduled.ScheduledTasks"
+        ]
+      },
+      {
+        "tag": "code.function",
+        "values": [
+          "performPeriodicTaskWithCron",
+          "performPeriodicTask"
+        ]
+      },
+      {
+        "tag": "error",
+        "values": [
+          "none"
+        ]
+      },
+      {
+        "tag": "outcome",
+        "values": [
+          "SUCCESS"
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,73 @@
+{
+    "name": "http.server.requests",
+    "baseUnit": "seconds",
+    "measurements": [
+      {
+        "statistic": "COUNT",
+        "value": 29
+      },
+      {
+        "statistic": "TOTAL_TIME",
+        "value": 0.4068942
+      },
+      {
+        "statistic": "MAX",
+        "value": 0.0025964
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "exception",
+        "values": [
+          "none"
+        ]
+      },
+      {
+        "tag": "method",
+        "values": [
+          "GET"
+        ]
+      },
+      {
+        "tag": "error",
+        "values": [
+          "none"
+        ]
+      },
+      {
+        "tag": "uri",
+        "values": [
+          "/api/info",
+          "/actuator/caches",
+          "/actuator/threaddump",
+          "/actuator/info",
+          "/actuator/health/**",
+          "/actuator/loggers",
+          "/actuator/auditevents",
+          "/actuator/env",
+          "/actuator/metrics/{requiredMetricName}",
+          "/actuator",
+          "/actuator/configprops",
+          "/actuator/beans",
+          "/actuator/logfile",
+          "/actuator/health",
+          "/actuator/metrics",
+          "/actuator/conditions"
+        ]
+      },
+      {
+        "tag": "outcome",
+        "values": [
+          "CLIENT_ERROR",
+          "SUCCESS"
+        ]
+      },
+      {
+        "tag": "status",
+        "values": [
+          "404",
+          "200"
+        ]
+      }
+    ]
+  }

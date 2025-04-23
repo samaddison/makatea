@@ -1,0 +1,52 @@
+{
+    "name": "http.client.requests.active",
+    "baseUnit": "seconds",
+    "measurements": [
+      {
+        "statistic": "ACTIVE_TASKS",
+        "value": 0
+      },
+      {
+        "statistic": "DURATION",
+        "value": 0
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "exception",
+        "values": [
+          "none"
+        ]
+      },
+      {
+        "tag": "method",
+        "values": [
+          "POST"
+        ]
+      },
+      {
+        "tag": "uri",
+        "values": [
+          "/instances"
+        ]
+      },
+      {
+        "tag": "outcome",
+        "values": [
+          "UNKNOWN"
+        ]
+      },
+      {
+        "tag": "client.name",
+        "values": [
+          "localhost"
+        ]
+      },
+      {
+        "tag": "status",
+        "values": [
+          "CLIENT_ERROR"
+        ]
+      }
+    ]
+  }

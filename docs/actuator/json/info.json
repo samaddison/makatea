@@ -1,0 +1,74 @@
+{
+    "git": {
+      "branch": "master",
+      "commit": {
+        "time": "2025-04-23T03:02:32Z",
+        "message": {
+          "full": "First commit\n",
+          "short": "First commit"
+        },
+        "id": {
+          "describe": "",
+          "abbrev": "4b21d9c",
+          "full": "4b21d9c937fb0db84f0a8cb3b220ae6a960918fa"
+        },
+        "user": {
+          "email": "samaddison@yahoo.com",
+          "name": "Juan Miguel Garcia"
+        }
+      },
+      "build": {
+        "user": {
+          "name": "Juan Miguel Garcia"
+        }
+      }
+    },
+    "build": {
+      "artifact": "spring-boot-demo-app",
+      "name": "spring-boot-demo-app",
+      "time": "2025-04-23T10:23:42.348Z",
+      "version": "0.0.1-SNAPSHOT",
+      "group": "au.com.patrick"
+    },
+    "java": {
+      "version": "21.0.6",
+      "vendor": {
+        "name": "Oracle Corporation",
+        "version": "Oracle GraalVM 21.0.6+8.1"
+      },
+      "runtime": {
+        "name": "Java(TM) SE Runtime Environment",
+        "version": "21.0.6+8-LTS-jvmci-23.1-b55"
+      },
+      "jvm": {
+        "name": "Java HotSpot(TM) 64-Bit Server VM",
+        "vendor": "Oracle Corporation",
+        "version": "21.0.6+8-LTS-jvmci-23.1-b55"
+      }
+    },
+    "os": {
+      "name": "Windows 11",
+      "version": "10.0",
+      "arch": "amd64"
+    },
+    "process": {
+      "pid": 6636,
+      "parentPid": 20676,
+      "owner": "DESKTOP-H8F4AAH\\Juan Miguel Garcia",
+      "cpus": 16,
+      "memory": {
+        "heap": {
+          "max": 5314183168,
+          "committed": 113246208,
+          "used": 49466472,
+          "init": 335544320
+        },
+        "nonHeap": {
+          "max": -1,
+          "committed": 76283904,
+          "used": 72691288,
+          "init": 2555904
+        }
+      }
+    }
+  }

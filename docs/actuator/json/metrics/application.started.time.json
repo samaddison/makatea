@@ -1,0 +1,19 @@
+{
+    "name": "application.started.time",
+    "description": "Time taken to start the application",
+    "baseUnit": "seconds",
+    "measurements": [
+      {
+        "statistic": "VALUE",
+        "value": 2.535
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "main.application.class",
+        "values": [
+          "au.com.patrick.springbootdemoapp.SpringBootDemoAppApplication"
+        ]
+      }
+    ]
+  }

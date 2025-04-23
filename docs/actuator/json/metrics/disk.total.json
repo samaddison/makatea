@@ -1,0 +1,19 @@
+{
+    "name": "disk.total",
+    "description": "Total space for path",
+    "baseUnit": "bytes",
+    "measurements": [
+      {
+        "statistic": "VALUE",
+        "value": 262854930432
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "path",
+        "values": [
+          "C:\\Users\\Juan Miguel Garcia\\IdeaProjects\\spring-boot-demo-app\\spring-boot-demo-app\\."
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,62 @@
+{
+    "name": "http.client.requests",
+    "baseUnit": "seconds",
+    "measurements": [
+      {
+        "statistic": "COUNT",
+        "value": 90
+      },
+      {
+        "statistic": "TOTAL_TIME",
+        "value": 0.3988612
+      },
+      {
+        "statistic": "MAX",
+        "value": 0.0020981
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "exception",
+        "values": [
+          "ResourceAccessException"
+        ]
+      },
+      {
+        "tag": "method",
+        "values": [
+          "POST"
+        ]
+      },
+      {
+        "tag": "error",
+        "values": [
+          "ResourceAccessException"
+        ]
+      },
+      {
+        "tag": "uri",
+        "values": [
+          "/instances"
+        ]
+      },
+      {
+        "tag": "outcome",
+        "values": [
+          "UNKNOWN"
+        ]
+      },
+      {
+        "tag": "client.name",
+        "values": [
+          "localhost"
+        ]
+      },
+      {
+        "tag": "status",
+        "values": [
+          "CLIENT_ERROR"
+        ]
+      }
+    ]
+  }

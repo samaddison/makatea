@@ -1,0 +1,11 @@
+{
+    "name": "tomcat.sessions.alive.max",
+    "baseUnit": "seconds",
+    "measurements": [
+      {
+        "statistic": "VALUE",
+        "value": 0
+      }
+    ],
+    "availableTags": []
+  }

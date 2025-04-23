@@ -1,0 +1,20 @@
+{
+    "name": "executor.pool.size",
+    "description": "The current number of threads in the pool",
+    "baseUnit": "threads",
+    "measurements": [
+      {
+        "statistic": "VALUE",
+        "value": 1
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "name",
+        "values": [
+          "applicationTaskExecutor",
+          "taskScheduler"
+        ]
+      }
+    ]
+  }

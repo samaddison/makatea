@@ -1,0 +1,20 @@
+{
+    "name": "executor.completed",
+    "description": "The approximate total number of tasks that have completed execution",
+    "baseUnit": "tasks",
+    "measurements": [
+      {
+        "statistic": "COUNT",
+        "value": 141
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "name",
+        "values": [
+          "applicationTaskExecutor",
+          "taskScheduler"
+        ]
+      }
+    ]
+  }

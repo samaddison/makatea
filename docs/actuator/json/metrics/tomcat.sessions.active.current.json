@@ -1,0 +1,11 @@
+{
+    "name": "tomcat.sessions.active.current",
+    "baseUnit": "sessions",
+    "measurements": [
+      {
+        "statistic": "VALUE",
+        "value": 0
+      }
+    ],
+    "availableTags": []
+  }

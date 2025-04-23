@@ -1,0 +1,31 @@
+{
+  "name": "jvm.memory.committed",
+  "description": "The amount of memory in bytes that is committed for the Java virtual machine to use",
+  "baseUnit": "bytes",
+  "measurements": [
+    {
+      "statistic": "VALUE",
+      "value": 196345856
+    }
+  ],
+  "availableTags": [
+    {
+      "tag": "area",
+      "values": [
+        "heap",
+        "nonheap"
+      ]
+    },
+    {
+      "tag": "id",
+      "values": [
+        "G1 Survivor Space",
+        "Compressed Class Space",
+        "Metaspace",
+        "CodeCache",
+        "G1 Old Gen",
+        "G1 Eden Space"
+      ]
+    }
+  ]
+}

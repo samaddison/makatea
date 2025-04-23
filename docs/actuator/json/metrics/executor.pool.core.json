@@ -1,0 +1,20 @@
+{
+    "name": "executor.pool.core",
+    "description": "The core number of threads for the pool",
+    "baseUnit": "threads",
+    "measurements": [
+      {
+        "statistic": "VALUE",
+        "value": 9
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "name",
+        "values": [
+          "taskScheduler",
+          "applicationTaskExecutor"
+        ]
+      }
+    ]
+  }

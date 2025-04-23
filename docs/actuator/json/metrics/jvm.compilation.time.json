@@ -1,0 +1,19 @@
+{
+    "name": "jvm.compilation.time",
+    "description": "The approximate accumulated elapsed time spent in compilation",
+    "baseUnit": "ms",
+    "measurements": [
+      {
+        "statistic": "COUNT",
+        "value": 2223
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "compiler",
+        "values": [
+          "HotSpot 64-Bit Tiered Compilers"
+        ]
+      }
+    ]
+  }

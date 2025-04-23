@@ -1,0 +1,20 @@
+{
+    "name": "executor.queue.remaining",
+    "description": "The number of additional elements that this queue can ideally accept without blocking",
+    "baseUnit": "tasks",
+    "measurements": [
+      {
+        "statistic": "VALUE",
+        "value": 4294967294
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "name",
+        "values": [
+          "applicationTaskExecutor",
+          "taskScheduler"
+        ]
+      }
+    ]
+  }

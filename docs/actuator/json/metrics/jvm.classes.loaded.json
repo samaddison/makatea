@@ -1,0 +1,12 @@
+{
+    "name": "jvm.classes.loaded",
+    "description": "The number of classes that are currently loaded in the Java virtual machine",
+    "baseUnit": "classes",
+    "measurements": [
+      {
+        "statistic": "VALUE",
+        "value": 12365
+      }
+    ],
+    "availableTags": []
+  }

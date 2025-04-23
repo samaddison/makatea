@@ -1,0 +1,14 @@
+{
+    "cacheManagers": {
+      "cacheManager": {
+        "caches": {
+          "otherCache": {
+            "target": "com.github.benmanes.caffeine.cache.BoundedLocalCache$BoundedLocalManualCache"
+          },
+          "greetingCache": {
+            "target": "com.github.benmanes.caffeine.cache.BoundedLocalCache$BoundedLocalManualCache"
+          }
+        }
+      }
+    }
+  }

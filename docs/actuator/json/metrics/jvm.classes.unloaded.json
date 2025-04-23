@@ -1,0 +1,12 @@
+{
+    "name": "jvm.classes.unloaded",
+    "description": "The total number of classes unloaded since the Java virtual machine has started execution",
+    "baseUnit": "classes",
+    "measurements": [
+      {
+        "statistic": "COUNT",
+        "value": 0
+      }
+    ],
+    "availableTags": []
+  }

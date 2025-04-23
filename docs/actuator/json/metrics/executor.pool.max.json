@@ -1,0 +1,20 @@
+{
+    "name": "executor.pool.max",
+    "description": "The maximum allowed number of threads in the pool",
+    "baseUnit": "threads",
+    "measurements": [
+      {
+        "statistic": "VALUE",
+        "value": 4294967294
+      }
+    ],
+    "availableTags": [
+      {
+        "tag": "name",
+        "values": [
+          "applicationTaskExecutor",
+          "taskScheduler"
+        ]
+      }
+    ]
+  }
