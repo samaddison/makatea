@@ -2,7 +2,7 @@
 
 ## Build/Run Commands
 - Project Management tool: `uv`
-- Run application: `uv main.py`
+- Run application: `uv run src/main.py`
 - Install dependencies: `uv pip install -e .`
 - Run tests: `pytest`
 - Run single test: `pytest tests/path/to/test.py::test_function_name -v`
