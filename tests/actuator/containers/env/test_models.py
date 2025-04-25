@@ -1,4 +1,3 @@
-import pytest
 from src.actuator.containers.env import Env, PropertySource, PropertyValue
 
 
@@ -6,34 +5,24 @@ def test_env_model_parsing():
     # Test JSON data
     json_data = {
         "activeProfiles": [],
-        "defaultProfiles": [
-            "default"
-        ],
+        "defaultProfiles": ["default"],
         "propertySources": [
             {
                 "name": "server.ports",
-                "properties": {
-                    "local.server.port": {
-                        "value": 9090
-                    }
-                }
+                "properties": {"local.server.port": {"value": 9090}},
             },
             {
                 "name": "systemProperties",
                 "properties": {
-                    "java.specification.version": {
-                        "value": "21"
-                    },
-                    "os.name": {
-                        "value": "Windows 11"
-                    },
+                    "java.specification.version": {"value": "21"},
+                    "os.name": {"value": "Windows 11"},
                     "user.timezone": {
                         "value": "Australia/Perth",
-                        "origin": "System Environment Property"
-                    }
-                }
-            }
-        ]
+                        "origin": "System Environment Property",
+                    },
+                },
+            },
+        ],
     }
 
     # Parse the JSON
@@ -95,15 +84,11 @@ def test_env_model_parsing():
 
 def test_empty_env():
     # Test minimal JSON data
-    json_data = {
-        "activeProfiles": [],
-        "defaultProfiles": [],
-        "propertySources": []
-    }
-    
+    json_data = {"activeProfiles": [], "defaultProfiles": [], "propertySources": []}
+
     # Parse the JSON
     env = Env.model_validate(json_data)
-    
+
     # Verify empty profiles and property sources
     assert len(env.active_profiles) == 0
     assert len(env.default_profiles) == 0

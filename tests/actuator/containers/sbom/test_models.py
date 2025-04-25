@@ -1,7 +1,14 @@
-import pytest
 from datetime import datetime
 from src.actuator.containers.sbom import (
-    SBOM, Metadata, Tool, Component, Hash, License, ExternalReference, Property, Dependency
+    SBOM,
+    Metadata,
+    Tool,
+    Component,
+    Hash,
+    License,
+    ExternalReference,
+    Property,
+    Dependency,
 )
 
 
@@ -21,10 +28,10 @@ def test_sbom_model_parsing():
                         "bom-ref": "tool:cyclonedx-gradle-plugin",
                         "author": "CycloneDX",
                         "name": "cyclonedx-gradle-plugin",
-                        "version": "2.2.0"
+                        "version": "2.2.0",
                     }
                 ],
-                "services": []
+                "services": [],
             },
             "component": {
                 "type": "application",
@@ -34,9 +41,9 @@ def test_sbom_model_parsing():
                 "version": "0.0.1-SNAPSHOT",
                 "purl": "pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A",
                 "modified": False,
-                "externalReferences": []
+                "externalReferences": [],
             },
-            "licenses": []
+            "licenses": [],
         },
         "components": [
             {
@@ -47,36 +54,22 @@ def test_sbom_model_parsing():
                 "version": "2.18.3",
                 "description": "Core annotations used for value types, used by Jackson data binding package.",
                 "hashes": [
-                    {
-                        "alg": "MD5",
-                        "content": "cae46e2c56e1b40b67dcfcfc9b6e275a"
-                    },
+                    {"alg": "MD5", "content": "cae46e2c56e1b40b67dcfcfc9b6e275a"},
                     {
                         "alg": "SHA-1",
-                        "content": "7fa21cf7da4598f8240e4ebd9779249622af1acd"
-                    }
+                        "content": "7fa21cf7da4598f8240e4ebd9779249622af1acd",
+                    },
                 ],
-                "licenses": [
-                    {
-                        "license": {
-                            "id": "Apache-2.0"
-                        }
-                    }
-                ],
+                "licenses": [{"license": {"id": "Apache-2.0"}}],
                 "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.18.3?type=jar",
                 "modified": False,
                 "externalReferences": [
                     {
                         "type": "vcs",
-                        "url": "https://github.com/FasterXML/jackson-annotations"
+                        "url": "https://github.com/FasterXML/jackson-annotations",
                     }
                 ],
-                "properties": [
-                    {
-                        "name": "cdx:maven:package:test",
-                        "value": "false"
-                    }
-                ]
+                "properties": [{"name": "cdx:maven:package:test", "value": "false"}],
             }
         ],
         "dependencies": [
@@ -84,10 +77,10 @@ def test_sbom_model_parsing():
                 "ref": "pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A",
                 "dependsOn": [
                     "pkg:maven/org.springframework.boot/spring-boot-starter-data-rest@3.4.4?type=jar",
-                    "pkg:maven/org.springframework.boot/spring-boot-starter-web@3.4.4?type=jar"
-                ]
+                    "pkg:maven/org.springframework.boot/spring-boot-starter-web@3.4.4?type=jar",
+                ],
             }
-        ]
+        ],
     }
 
     # Parse the JSON
@@ -110,7 +103,7 @@ def test_sbom_model_parsing():
     assert isinstance(tools, Tool)
     assert len(tools.components) == 1
     assert len(tools.services) == 0
-    
+
     tool_component = tools.components[0]
     assert isinstance(tool_component, Component)
     assert tool_component.type == "application"
@@ -125,8 +118,14 @@ def test_sbom_model_parsing():
     assert main_component.group == "au.com.patrick"
     assert main_component.name == "spring-boot-demo-app"
     assert main_component.version == "0.0.1-SNAPSHOT"
-    assert main_component.bom_ref == "pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A"
-    assert main_component.purl == "pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A"
+    assert (
+        main_component.bom_ref
+        == "pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A"
+    )
+    assert (
+        main_component.purl
+        == "pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A"
+    )
     assert main_component.modified is False
     assert len(main_component.external_references) == 0
 
@@ -138,8 +137,14 @@ def test_sbom_model_parsing():
     assert component.group == "com.fasterxml.jackson.core"
     assert component.name == "jackson-annotations"
     assert component.version == "2.18.3"
-    assert component.description == "Core annotations used for value types, used by Jackson data binding package."
-    assert component.bom_ref == "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.18.3?type=jar"
+    assert (
+        component.description
+        == "Core annotations used for value types, used by Jackson data binding package."
+    )
+    assert (
+        component.bom_ref
+        == "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.18.3?type=jar"
+    )
 
     # Test hashes
     assert len(component.hashes) == 2
@@ -172,17 +177,38 @@ def test_sbom_model_parsing():
     assert len(sbom.dependencies) == 1
     dependency = sbom.dependencies[0]
     assert isinstance(dependency, Dependency)
-    assert dependency.ref == "pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A"
+    assert (
+        dependency.ref
+        == "pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A"
+    )
     assert len(dependency.depends_on) == 2
-    assert "pkg:maven/org.springframework.boot/spring-boot-starter-data-rest@3.4.4?type=jar" in dependency.depends_on
-    assert "pkg:maven/org.springframework.boot/spring-boot-starter-web@3.4.4?type=jar" in dependency.depends_on
+    assert (
+        "pkg:maven/org.springframework.boot/spring-boot-starter-data-rest@3.4.4?type=jar"
+        in dependency.depends_on
+    )
+    assert (
+        "pkg:maven/org.springframework.boot/spring-boot-starter-web@3.4.4?type=jar"
+        in dependency.depends_on
+    )
 
     # Test helper methods
-    assert sbom.get_component_by_ref("pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A") == main_component
-    assert sbom.get_component_by_ref("pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.18.3?type=jar") == component
+    assert (
+        sbom.get_component_by_ref(
+            "pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A"
+        )
+        == main_component
+    )
+    assert (
+        sbom.get_component_by_ref(
+            "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.18.3?type=jar"
+        )
+        == component
+    )
     assert sbom.get_component_by_ref("non-existent-ref") is None
 
-    deps = sbom.get_dependencies_for("pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A")
+    deps = sbom.get_dependencies_for(
+        "pkg:maven/au.com.patrick/spring-boot-demo-app@0.0.1-SNAPSHOT?project_path=%3A"
+    )
     assert len(deps) == 2
     assert sbom.get_dependencies_for("non-existent-ref") == []
 
@@ -196,22 +222,19 @@ def test_minimal_sbom():
         "version": 1,
         "metadata": {
             "timestamp": "2025-04-23T00:00:00Z",
-            "tools": {
-                "components": [],
-                "services": []
-            },
+            "tools": {"components": [], "services": []},
             "component": {
                 "type": "application",
                 "bom-ref": "test-ref",
                 "name": "test-app",
-                "version": "1.0"
-            }
-        }
+                "version": "1.0",
+            },
+        },
     }
-    
+
     # Parse the JSON
     sbom = SBOM.model_validate(json_data)
-    
+
     # Verify minimal SBOM
     assert sbom.bom_format == "CycloneDX"
     assert sbom.metadata.component.name == "test-app"

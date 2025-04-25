@@ -1,4 +1,3 @@
-import pytest
 from src.actuator.containers.conditions import Conditions, Context, ConditionEvaluation
 
 
@@ -11,35 +10,35 @@ def test_conditions_model_parsing():
                     "SpringBootAdminClientAutoConfiguration": [
                         {
                             "condition": "OnWebApplicationCondition",
-                            "message": "@ConditionalOnWebApplication (required) found 'session' scope"
+                            "message": "@ConditionalOnWebApplication (required) found 'session' scope",
                         },
                         {
                             "condition": "SpringBootAdminClientEnabledCondition",
-                            "message": "matched"
-                        }
+                            "message": "matched",
+                        },
                     ],
                     "AuditAutoConfiguration": [
                         {
                             "condition": "OnPropertyCondition",
-                            "message": "@ConditionalOnProperty (management.auditevents.enabled) matched"
+                            "message": "@ConditionalOnProperty (management.auditevents.enabled) matched",
                         },
                         {
                             "condition": "OnBeanCondition",
-                            "message": "@ConditionalOnBean (types: org.springframework.boot.actuate.audit.AuditEventRepository; SearchStrategy: all) found bean 'auditEventRepository'"
-                        }
-                    ]
+                            "message": "@ConditionalOnBean (types: org.springframework.boot.actuate.audit.AuditEventRepository; SearchStrategy: all) found bean 'auditEventRepository'",
+                        },
+                    ],
                 },
                 "negativeMatches": {
                     "AopAutoConfiguration.JdkDynamicAutoProxyConfiguration": [
                         {
                             "condition": "OnPropertyCondition",
-                            "message": "@ConditionalOnProperty (spring.aop.proxy-target-class=false) did not find property 'proxy-target-class'"
+                            "message": "@ConditionalOnProperty (spring.aop.proxy-target-class=false) did not find property 'proxy-target-class'",
                         }
                     ]
                 },
                 "unconditionalClasses": [
                     "org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration"
-                ]
+                ],
             }
         }
     }
@@ -55,7 +54,7 @@ def test_conditions_model_parsing():
     # Test context
     context = conditions.get_context("spring-boot-demo-app")
     assert isinstance(context, Context)
-    
+
     # Test positive configurations
     positive_configs = context.get_positive_configurations()
     assert len(positive_configs) == 2
@@ -69,22 +68,32 @@ def test_conditions_model_parsing():
 
     # Test unconditional classes
     assert len(context.unconditional_classes) == 1
-    assert context.unconditional_classes[0] == "org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration"
+    assert (
+        context.unconditional_classes[0]
+        == "org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration"
+    )
 
     # Test specific positive configuration evaluations
-    admin_matches = context.get_positive_matches("SpringBootAdminClientAutoConfiguration")
+    admin_matches = context.get_positive_matches(
+        "SpringBootAdminClientAutoConfiguration"
+    )
     assert len(admin_matches) == 2
     assert isinstance(admin_matches[0], ConditionEvaluation)
     assert admin_matches[0].condition == "OnWebApplicationCondition"
-    assert admin_matches[0].message == "@ConditionalOnWebApplication (required) found 'session' scope"
-    
+    assert (
+        admin_matches[0].message
+        == "@ConditionalOnWebApplication (required) found 'session' scope"
+    )
+
     # Test specific negative configuration evaluations
-    aop_matches = context.get_negative_matches("AopAutoConfiguration.JdkDynamicAutoProxyConfiguration")
+    aop_matches = context.get_negative_matches(
+        "AopAutoConfiguration.JdkDynamicAutoProxyConfiguration"
+    )
     assert len(aop_matches) == 1
     assert isinstance(aop_matches[0], ConditionEvaluation)
     assert aop_matches[0].condition == "OnPropertyCondition"
     assert aop_matches[0].message.startswith("@ConditionalOnProperty")
-    
+
     # Test non-existent context and configuration
     assert conditions.get_context("non-existent-context") is None
     assert context.get_positive_matches("non-existent-config") is None
@@ -94,9 +103,9 @@ def test_conditions_model_parsing():
 def test_empty_conditions():
     # Test empty JSON data
     json_data = {"contexts": {}}
-    
+
     # Parse the JSON
     conditions = Conditions.model_validate(json_data)
-    
+
     # Verify empty contexts
     assert len(conditions.get_context_names()) == 0

@@ -1,13 +1,7 @@
-import pytest
 from datetime import datetime
 
 from src.actuator.containers.scheduledtasks.models import (
     ScheduledTasks,
-    CronTask,
-    FixedRateTask,
-    FixedDelayTask,
-    Runnable,
-    Execution,
 )
 
 
@@ -16,37 +10,29 @@ def test_scheduled_tasks_model_parsing():
     json_data = {
         "cron": [
             {
-                "runnable": {
-                    "target": "com.example.TaskClass.cronTask"
-                },
+                "runnable": {"target": "com.example.TaskClass.cronTask"},
                 "expression": "*/10 * * * * *",
                 "lastExecution": {
                     "time": "2025-04-23T10:59:50.001274700Z",
-                    "status": "SUCCESS"
+                    "status": "SUCCESS",
                 },
-                "nextExecution": {
-                    "time": "2025-04-23T10:59:59.999767Z"
-                }
+                "nextExecution": {"time": "2025-04-23T10:59:59.999767Z"},
             }
         ],
         "fixedDelay": [],
         "fixedRate": [
             {
-                "runnable": {
-                    "target": "com.example.TaskClass.fixedRateTask"
-                },
+                "runnable": {"target": "com.example.TaskClass.fixedRateTask"},
                 "initialDelay": 0,
                 "interval": 10000,
                 "lastExecution": {
                     "time": "2025-04-23T10:59:45.559378500Z",
-                    "status": "SUCCESS"
+                    "status": "SUCCESS",
                 },
-                "nextExecution": {
-                    "time": "2025-04-23T10:59:55.550767Z"
-                }
+                "nextExecution": {"time": "2025-04-23T10:59:55.550767Z"},
             }
         ],
-        "custom": []
+        "custom": [],
     }
 
     # Parse the JSON

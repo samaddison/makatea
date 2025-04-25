@@ -11,15 +11,15 @@ from .ssl_component import SslComponent
 class HealthCheck(ExtraBaseModel):
     status: str
     components: Dict[str, Component] = Field(default_factory=dict)
-    
+
     def model_post_init(self, __context: Any) -> None:
         # Map component types based on their keys
         component_mapping: Dict[str, Type[Component]] = {
             "ping": PingComponent,
             "diskSpace": DiskSpaceComponent,
-            "ssl": SslComponent
+            "ssl": SslComponent,
         }
-        
+
         # Convert generic components to their specific types
         for key, component in list(self.components.items()):
             if key in component_mapping:

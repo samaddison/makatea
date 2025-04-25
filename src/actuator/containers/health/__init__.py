@@ -13,5 +13,5 @@ __all__ = [
     "DiskSpaceComponent",
     "DiskSpaceDetails",
     "SslComponent",
-    "SslDetails"
+    "SslDetails",
 ]

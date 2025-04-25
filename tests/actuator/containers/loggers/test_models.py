@@ -1,32 +1,15 @@
-import pytest
 from src.actuator.containers.loggers import Loggers, Logger, LoggerGroup
 
 
 def test_loggers_model_parsing():
     # Test JSON data
     json_data = {
-        "levels": [
-            "OFF",
-            "ERROR",
-            "WARN",
-            "INFO",
-            "DEBUG",
-            "TRACE"
-        ],
+        "levels": ["OFF", "ERROR", "WARN", "INFO", "DEBUG", "TRACE"],
         "loggers": {
-            "ROOT": {
-                "configuredLevel": "INFO",
-                "effectiveLevel": "INFO"
-            },
-            "_org": {
-                "effectiveLevel": "INFO"
-            },
-            "_org.springframework": {
-                "effectiveLevel": "INFO"
-            },
-            "_org.springframework.web": {
-                "effectiveLevel": "INFO"
-            }
+            "ROOT": {"configuredLevel": "INFO", "effectiveLevel": "INFO"},
+            "_org": {"effectiveLevel": "INFO"},
+            "_org.springframework": {"effectiveLevel": "INFO"},
+            "_org.springframework.web": {"effectiveLevel": "INFO"},
         },
         "groups": {
             "web": {
@@ -35,17 +18,17 @@ def test_loggers_model_parsing():
                     "org.springframework.http",
                     "org.springframework.web",
                     "org.springframework.boot.actuate.endpoint.web",
-                    "org.springframework.boot.web.servlet.ServletContextInitializerBeans"
+                    "org.springframework.boot.web.servlet.ServletContextInitializerBeans",
                 ]
             },
             "sql": {
                 "members": [
                     "org.springframework.jdbc.core",
                     "org.hibernate.SQL",
-                    "org.jooq.tools.LoggerListener"
+                    "org.jooq.tools.LoggerListener",
                 ]
-            }
-        }
+            },
+        },
     }
 
     # Parse the JSON
@@ -85,7 +68,10 @@ def test_loggers_model_parsing():
     assert isinstance(web_group, LoggerGroup)
     assert len(web_group.members) == 5
     assert "org.springframework.web" in web_group.members
-    assert "org.springframework.boot.web.servlet.ServletContextInitializerBeans" in web_group.members
+    assert (
+        "org.springframework.boot.web.servlet.ServletContextInitializerBeans"
+        in web_group.members
+    )
 
     # Test get_group_members
     sql_members = loggers.get_group_members("sql")
@@ -102,15 +88,11 @@ def test_loggers_model_parsing():
 
 def test_empty_loggers():
     # Test minimal JSON data
-    json_data = {
-        "levels": [],
-        "loggers": {},
-        "groups": {}
-    }
-    
+    json_data = {"levels": [], "loggers": {}, "groups": {}}
+
     # Parse the JSON
     loggers = Loggers.model_validate(json_data)
-    
+
     # Verify empty levels, loggers and groups
     assert len(loggers.levels) == 0
     assert len(loggers.get_logger_names()) == 0

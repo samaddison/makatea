@@ -8,18 +8,21 @@ from ..common.extra_base_model import ExtraBaseModel
 
 class GitUser(ExtraBaseModel):
     """Represents a Git user."""
+
     name: str
     email: Optional[str] = None
 
 
 class GitCommitMessage(ExtraBaseModel):
     """Represents a Git commit message."""
+
     full: str
     short: str
 
 
 class GitCommitId(ExtraBaseModel):
     """Represents a Git commit ID."""
+
     describe: str = ""
     abbrev: str
     full: str
@@ -27,6 +30,7 @@ class GitCommitId(ExtraBaseModel):
 
 class GitCommit(ExtraBaseModel):
     """Represents a Git commit."""
+
     time: datetime
     message: GitCommitMessage
     id: GitCommitId
@@ -35,6 +39,7 @@ class GitCommit(ExtraBaseModel):
 
 class Git(ExtraBaseModel):
     """Represents Git information."""
+
     branch: str
     commit: GitCommit
     build: Optional[Dict[str, Any]] = None
@@ -42,6 +47,7 @@ class Git(ExtraBaseModel):
 
 class Build(ExtraBaseModel):
     """Represents build information."""
+
     artifact: str
     name: str
     time: datetime
@@ -51,18 +57,21 @@ class Build(ExtraBaseModel):
 
 class JavaVendor(ExtraBaseModel):
     """Represents Java vendor information."""
+
     name: str
     version: str
 
 
 class JavaRuntime(ExtraBaseModel):
     """Represents Java runtime information."""
+
     name: str
     version: str
 
 
 class JavaJvm(ExtraBaseModel):
     """Represents Java JVM information."""
+
     name: str
     vendor: str
     version: str
@@ -70,6 +79,7 @@ class JavaJvm(ExtraBaseModel):
 
 class Java(ExtraBaseModel):
     """Represents Java information."""
+
     version: str
     vendor: JavaVendor
     runtime: JavaRuntime
@@ -78,6 +88,7 @@ class Java(ExtraBaseModel):
 
 class OS(ExtraBaseModel):
     """Represents operating system information."""
+
     name: str
     version: str
     arch: str
@@ -85,6 +96,7 @@ class OS(ExtraBaseModel):
 
 class MemorySection(ExtraBaseModel):
     """Represents a memory section (heap or non-heap)."""
+
     max: int
     committed: int
     used: int
@@ -93,12 +105,14 @@ class MemorySection(ExtraBaseModel):
 
 class Memory(ExtraBaseModel):
     """Represents memory information."""
+
     heap: MemorySection
     non_heap: MemorySection = Field(alias="nonHeap")
 
 
 class Process(ExtraBaseModel):
     """Represents process information."""
+
     pid: int
     parent_pid: Optional[int] = Field(None, alias="parentPid")
     owner: Optional[str] = None
@@ -108,6 +122,7 @@ class Process(ExtraBaseModel):
 
 class Info(ExtraBaseModel):
     """Container for Spring Boot info."""
+
     git: Optional[Git] = None
     build: Optional[Build] = None
     java: Optional[Java] = None
