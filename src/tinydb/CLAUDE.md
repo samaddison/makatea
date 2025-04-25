@@ -9,6 +9,8 @@ TinyRepo is a generic wrapper around TinyDB tables that provides type-safe opera
 - Filtering by date ranges
 - Statistical operations (count, sum, average)
 - Time-based record expiration
+- Thread-safe operations
+- Size-limited collections with automatic pruning
 
 ## Usage
 
@@ -26,6 +28,14 @@ repo = TinyRepo[YourPydanticModel](
     db=db,
     table_name="your_models",
     model=YourPydanticModel
+)
+
+# Create a size-limited repository (keeps only the most recent N items)
+limited_repo = TinyRepo[YourPydanticModel](
+    db=db,
+    table_name="limited_models",
+    model=YourPydanticModel,
+    max_size=100  # Will automatically remove oldest items when exceeding this limit
 )
 ```
 
@@ -96,3 +106,19 @@ The repository is generic over a type parameter `T` that must be a Pydantic mode
 
 ### Deletion Strategy
 The `delete_older_than_x_minutes` method uses a predicate function to identify and remove records that are older than the specified time threshold.
+
+### Size Limitation
+When initialized with a `max_size` parameter, the repository automatically manages the number of items:
+- When adding a new item that would exceed the limit, the oldest item (based on created_at timestamp) is automatically removed
+- This creates a "sliding window" of the most recent N items
+- Useful for maintaining time-series data with a fixed storage budget
+
+### Thread Safety
+The TinyRepo class is completely thread-safe:
+- All operations are protected by an internal reentrant lock
+- Multiple threads can safely call any repository methods concurrently
+- Thread safety is implemented as an internal detail - clients don't need to add their own synchronization
+- Locking is optimized to minimize contention:
+  - The lock scope is kept as narrow as possible
+  - Some operations release the lock while processing data to improve concurrency
+  - Care is taken to avoid nested lock acquisition that could cause deadlocks
