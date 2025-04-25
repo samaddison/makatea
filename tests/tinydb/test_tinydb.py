@@ -198,3 +198,32 @@ def test_thread_safety(repo):
             matching_items = [item for item in all_items if item.name == item_name]
             assert len(matching_items) == 1, f"Item {item_name} not found or duplicated"
             assert matching_items[0].value == i
+
+
+def test_get_most_recent(repo):
+    """Test getting the most recently added item."""
+    # Empty repository should return None
+    assert repo.get_most_recent() is None
+
+    # Add items in a specific order
+    repo.add(Item(name="Item 1", value=10))
+    repo.add(Item(name="Item 2", value=20))
+    repo.add(Item(name="Item 3", value=30))
+
+    # Get the most recent item
+    most_recent = repo.get_most_recent()
+
+    # Should be the last added item
+    assert most_recent is not None
+    assert most_recent.name == "Item 3"
+    assert most_recent.value == 30
+
+    # Add one more item
+    repo.add(Item(name="Item 4", value=40))
+
+    # Get the most recent item again
+    most_recent = repo.get_most_recent()
+
+    # Should be the new last added item
+    assert most_recent.name == "Item 4"
+    assert most_recent.value == 40

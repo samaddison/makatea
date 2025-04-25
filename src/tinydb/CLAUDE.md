@@ -55,6 +55,9 @@ all_items = repo.get_all()  # Returns List[YourPydanticModel]
 
 # Filter items by a condition
 filtered_items = repo.filter(lambda x: x.field2 > 100)
+
+# Get the most recently added item
+latest_item = repo.get_most_recent()  # Returns the most recent item or None if empty
 ```
 
 ### Statistical Operations

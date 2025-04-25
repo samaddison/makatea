@@ -148,3 +148,29 @@ class TinyRepo(Generic[T]):
             deleted_count = len(self.table.search(is_old_record))
             self.table.remove(is_old_record)
             print(f"Deleted {deleted_count} records older than {minutes} minutes.")
+
+    def get_most_recent(self) -> Optional[T]:
+        """Get the most recently added item based on created_at timestamp.
+
+        Returns:
+            The most recently added item, or None if the repository is empty.
+        """
+        with self._lock:
+            if len(self.table) == 0:
+                return None
+
+            docs = self.table.all()
+            if not docs:
+                return None
+
+            # Find the record with the most recent created_at timestamp
+            most_recent_doc = max(
+                [doc for doc in docs if "created_at" in doc],
+                key=lambda doc: dateutil.parser.isoparse(doc["created_at"]),
+                default=None,
+            )
+
+            if most_recent_doc is None:
+                return None
+
+            return self.model.model_validate(most_recent_doc)
